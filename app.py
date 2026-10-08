@@ -5,7 +5,7 @@ import google.generativeai as genai
 # Sayfa Yapılandırması
 st.set_page_config(page_title="AI Search Assistant", page_icon="✨", layout="centered")
 
-# Özel CSS ile Tasarım
+# Özel CSS Tasarımı
 st.markdown("""
     <style>
     .stApp {
@@ -56,7 +56,7 @@ st.markdown("""
 st.markdown('<div class="main-title">✨ Akıllı Arama Asistanı</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">Web verileriyle desteklenmiş kişisel yapay zeka arama motorunuz.</div>', unsafe_allow_html=True)
 
-# Streamlit Secrets'tan API Anahtarı
+# Streamlit Secrets
 api_key = st.secrets.get("GEMINI_API_KEY")
 
 query = st.text_area("🔍 Ne öğrenmek istiyorsunuz?", placeholder="Örn: 11. Sınıf Biyoloji dersinin en kritik sınav kavramları nelerdir?", height=110)
@@ -92,10 +92,10 @@ Web'den Toplanan Güncel Bilgiler:
 {context_text}
 
 Görevin:
-Yukarıdaki bilgileri ve kendi geniş akademik bilgini kullanarak kullanıcıya son derece detaylı, net, maddeler halinde düzenlenmiş ve akıcı bir yanıt hazırla.
+Yukarıdaki bilgileri ve kendi geniş bilgini kullanarak kullanıcıya son derece detaylı, net, maddeler halinde düzenlenmiş ve akıcı bir yanıt hazırla.
 """
-                # Google API'nin en eski, en kararlı ve değişmeyen temel modeli
-                model = genai.GenerativeModel("gemini-pro")
+                # Aktif olan güncel model alias'ı
+                model = genai.GenerativeModel("gemini-1.5-flash-latest")
                 response = model.generate_content(prompt)
                 
                 # 3. Sonucu Göster
